@@ -1,0 +1,132 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[$fontsize$, a4paper]{article}
+\usepackage{fontspec}
+
+% LAYOUT
+%--------------------------------
+\usepackage{geometry}
+\geometry{$geometry$}
+
+% No page numbers
+\pagenumbering{gobble}
+
+% Left align
+\usepackage[document]{ragged2e}
+
+% Trim excessive whitespace before lists
+\usepackage{enumitem}
+\setlist{nolistsep}
+
+% LANGUAGE
+%--------------------------------
+$if(lang)$
+\usepackage{polyglossia}
+\setmainlanguage{$lang$}
+$endif$
+
+% TYPOGRAPHY
+%--------------------------------
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\usepackage[protrusion=true,final]{microtype}
+
+% converts LaTeX specials (quotes, dashes etc.) to Unicode
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont [Ligatures={Common}, Numbers={OldStyle}, BoldFont={$boldfont$}]{$mainfont$}
+\setsansfont[Scale=0.9]{$altfont$}
+\setmonofont[Scale=0.8]{$monofont$}
+
+% Set paragraph break
+\setlength{\parskip}{1em}
+
+% Custom ampersand
+\newcommand{\amper}{{\fontspec[Scale=.95]{$mainfont$}\selectfont\itshape\&}}
+
+$if(altfont)$
+    \setsansfont{$altfont$}
+$endif$
+
+% Command required by how Pandoc handles the list conversion
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% PDF SETUP
+%--------------------------------
+\usepackage[xetex, bookmarks, colorlinks, breaklinks]{hyperref}
+\hypersetup
+{
+  pdfauthor={$author$},
+  pdfsubject={$subject$},
+  pdftitle={$subject$},
+  colorlinks,breaklinks,
+  filecolor=black,
+  urlcolor=[rgb]{0.117,0.682,0.858},
+  linkcolor=[rgb]{0.117,0.682,0.858},
+  linkcolor=[rgb]{0.117,0.682,0.858},
+  citecolor=[rgb]{0.117,0.682,0.858}
+}
+
+% To display custom date in the example
+$if(customdate)$
+  \usepackage[$lang$]{datetime2}
+  \DTMsavedate{customdate}{$customdate$}
+$endif$
+
+% aligning return address ragged right
+\newlength{\addresswidth}
+%set the width of the address box to be that of the longest line, change the variable below if needed
+\settowidth{\addresswidth}{$city$, $if(customdate)$\DTMusedate{customdate}$else$\today$endif$}
+
+
+% DOCUMENT
+%--------------------------------
+\begin{document}
+\small
+
+
+\begin{flushright}
+  \begin{minipage}{\addresswidth}
+    $author$\\
+    $for(from)$
+      $from$\\
+    $endfor$
+    $city$, $if(customdate)$\DTMusedate{customdate}$else$\today$endif$
+  \end{minipage}
+\end{flushright}
+
+
+\vspace{1em}
+
+\normalsize \sffamily
+$for(to)$
+$to$\\
+$endfor$
+
+\vspace{3em}
+
+\rmfamily
+
+\vspace{1em}
+
+$if(subject)$
+\textbf{$subject$}
+$endif$
+
+\vspace{1em}
+
+$body$
+
+\begin{FlushRight}
+  \IfFileExists{$signatureFile$.pdf}
+  {
+    \includegraphics[height=2.5\baselineskip]{$signatureFile$.pdf} \par
+  }
+  {
+    \vspace{5.5\baselineskip}
+  }
+  $author$
+\end{FlushRight}
+
+\end{document}
