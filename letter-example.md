@@ -13,8 +13,10 @@ altfont: Helvetica
 monofont: Courier
 fontsize: 10pt
 geometry: a4paper, left=2cm, right=2cm, top=2cm, bottom=2cm
-# customdate: YYYY-MM-DD
-signatureFile: signature
+customdate: 2022-10-31
+signBelow: true
+signatureFile: filename
+printSignature: true
 
 to:
   - Recipent
