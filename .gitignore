@@ -1,5 +1,6 @@
 output.pdf
-sig-aslak.pdf
+sig-*.pdf
+letter.md
 /sendt
 .DS_Store
 /.git
