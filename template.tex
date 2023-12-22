@@ -1,7 +1,7 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
 
-\documentclass[$fontsize$, a4paper]{article}
+\documentclass[$fontsize$, a4paper, $lang$]{article}
 \usepackage{fontspec}
 
 % LAYOUT
@@ -22,8 +22,8 @@
 % LANGUAGE
 %--------------------------------
 $if(lang)$
-\usepackage{polyglossia}
-\setmainlanguage{$lang$}
+  \usepackage{polyglossia}
+  \setmainlanguage{$lang$}
 $endif$
 
 % TYPOGRAPHY
@@ -45,7 +45,7 @@ $endif$
 \newcommand{\amper}{{\fontspec[Scale=.95]{$mainfont$}\selectfont\itshape\&}}
 
 $if(altfont)$
-    \setsansfont{$altfont$}
+  \setsansfont{$altfont$}
 $endif$
 
 % Command required by how Pandoc handles the list conversion
