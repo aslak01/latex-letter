@@ -15,6 +15,7 @@ parentDir="sendt"
 mkdir -p "$parentDir"
 
 recipient="$1"
+filename="$recipient.pdf"
 destination="$parentDir/$recipient"
 
 if [ -d "$destination" ]; then
@@ -25,10 +26,10 @@ if [ -d "$destination" ]; then
 	destination="$destination-$counter"
 fi
 
-mv output.pdf "$recipient"
+mv output.pdf "$filename"
 
-rsync -a "$recipient" letter.md "$destination/"
+rsync -a "$filename" letter.md "$destination/"
 
-rm "$recipient"
+rm "$filename"
 
-echo "$recipient moved to $destination successfully."
+echo "$filename moved to $destination successfully."
