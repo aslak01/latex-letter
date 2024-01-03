@@ -10,8 +10,12 @@ if [ ! -f "output.pdf" ]; then
 	exit 1
 fi
 
+# ensure there is a parent dir
+parentDir="sendt"
+mkdir -p "$parentDir"
+
 recipient="$1"
-destination="sendt/$recipient"
+destination="$parentDir/$recipient"
 
 if [ -d "$destination" ]; then
 	counter=1
