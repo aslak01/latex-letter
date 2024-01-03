@@ -4,3 +4,4 @@ letter.md
 /sendt
 .DS_Store
 /.git
+*.log
