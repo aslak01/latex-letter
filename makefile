@@ -8,3 +8,10 @@ output.pdf : $(src)
 .PHONY: clean
 clean :
 	rm output.pdf
+
+send: send.sh
+	./send.sh $(filter-out $@,$(MAKECMDGOALS))
+
+# Ignore any command-line arguments passed to make
+%:
+	@:
