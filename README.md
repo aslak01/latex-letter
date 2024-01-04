@@ -2,8 +2,8 @@ Fork of [Letter Boilerplate](https://github.com/mrzool/letter-boilerplate),
 
 After installing dependencies `Pandoc`, a `LaTeX` distribution, e.g. `TinyTeX`,
 and the LaTeX packages `microtype`, `fontspec`, `geometry`, `ragged2e`,
-`enumitem`, `xunicode`, `xltxtra`, `hyperref`, `polyglossia`, `datetime2` with
-`tlmgr` (some may be included by default):
+`enumitem`, `xunicode`, `xltxtra`, `hyperref`, `babel`, `datetime2` with `tlmgr`
+(some may be included by default):
 
 ```bash
 cp letter-example.md letter.md

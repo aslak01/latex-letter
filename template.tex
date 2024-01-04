@@ -22,13 +22,11 @@
 % LANGUAGE
 %--------------------------------
 $if(lang)$
-  \usepackage{polyglossia}
-  \setmainlanguage{$lang$}
+  \usepackage[$lang$]{babel}
 $endif$
 
 % TYPOGRAPHY
 %--------------------------------
-\usepackage{xunicode}
 \usepackage{xltxtra}
 \usepackage[protrusion=true,final]{microtype}
 
@@ -54,7 +52,7 @@ $endif$
 
 % PDF SETUP
 %--------------------------------
-\usepackage[xetex, bookmarks, colorlinks, breaklinks]{hyperref}
+\usepackage[colorlinks, breaklinks]{hyperref}
 \hypersetup
 {
   pdfauthor={$author$},
