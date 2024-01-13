@@ -1,22 +1,26 @@
 ---
-author: Your namae
-city: Your place
+author: Your name
+city: Exampleville
 from:
   - Address line
   - Address line
 
 # Settings
-lang: en-GB
+# if you need custom fonts, set this to your
+# font folder path (macos example below)
+# fontpath: /Users/[username]/Library/Fonts/
+# fontext: .otf
 mainfont: Helvetica
-boldfont: Helvetica-Bold
+boldfont: Helvetica
 altfont: Helvetica
 monofont: Courier
 fontsize: 10pt
 geometry: a4paper, left=2cm, right=2cm, top=2cm, bottom=2cm
-customdate: 2022-10-31
+# customdate: 2022-10-31
+signatureFile: signature.pdf
 signBelow: true
-signatureFile: filename
 printSignature: true
+language: english
 
 to:
   - Recipent
