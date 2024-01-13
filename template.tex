@@ -30,9 +30,15 @@ $endif$
 \usepackage{xltxtra}
 \usepackage[protrusion=true,final]{microtype}
 
-% converts LaTeX specials (quotes, dashes etc.) to Unicode
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont [Ligatures={Common}, Numbers={OldStyle}, BoldFont={$boldfont$}]{$mainfont$}
+\setmainfont [
+  Path=$fontpath$,
+  Extension=$fontext$,
+  Ligatures={Common}, 
+  Numbers={OldStyle}, 
+  BoldFont={$boldfont$}
+]{$mainfont$}
+
 \setsansfont[Scale=0.9]{$altfont$}
 \setmonofont[Scale=0.8]{$monofont$}
 
@@ -84,7 +90,7 @@ $endif$
 \small
 
 
-\begin{flushright}
+\begin{FlushRight}
   \begin{minipage}{\addresswidth}
     $author$\\
     $for(from)$
@@ -92,7 +98,7 @@ $endif$
     $endfor$
     \vspace{0.1cm}$city$, $if(customdate)$\DTMusedate{customdate}$else$\today$endif$
   \end{minipage}
-\end{flushright}
+\end{FlushRight}
 
 
 \vspace{1em}
@@ -104,10 +110,6 @@ $endfor$
 
 \vspace{3em}
 
-\rmfamily
-
-\vspace{1em}
-
 $if(subject)$
 \textbf{$subject$}
 $endif$
@@ -115,15 +117,11 @@ $endif$
 \vspace{1em}
 
 $body$
+
 $if(signBelow)$
 \begin{FlushRight}
-  \IfFileExists{$signatureFile$.pdf}
-  {
-    \includegraphics[height=2.5\baselineskip]{$signatureFile$.pdf} \par
-  }
-  {
-    \vspace{5.5\baselineskip}
-  }
+  % \input{signature.pdf}
+% \IfFileExists{./$signatureFile$}{\includegraphics{$signatureFile$}}{Hey}
   $if(printSignature)$
     $author$
   $endif$
