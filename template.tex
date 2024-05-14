@@ -2,7 +2,6 @@
 %!TEX encoding = UTF-8 Unicode
 
 \documentclass[$fontsize$, a4paper, $lang$]{article}
-\usepackage{fontspec}
 
 % LAYOUT
 %--------------------------------
@@ -12,8 +11,6 @@
 % No page numbers
 \pagenumbering{gobble}
 
-% Left align
-\usepackage[document]{ragged2e}
 
 % Trim excessive whitespace before lists
 \usepackage{enumitem}
@@ -27,10 +24,12 @@ $endif$
 
 % TYPOGRAPHY
 %--------------------------------
+\usepackage{fontspec}
 \usepackage{xltxtra}
 \usepackage[protrusion=true,final]{microtype}
 
 \defaultfontfeatures{Mapping=tex-text}
+
 \setmainfont [
   Path=$fontpath$,
   Extension=$fontext$,
@@ -39,18 +38,11 @@ $endif$
   BoldFont={$boldfont$}
 ]{$mainfont$}
 
-\setsansfont[Scale=0.9]{$altfont$}
-\setmonofont[Scale=0.8]{$monofont$}
-
 % Set paragraph break
 \setlength{\parskip}{1em}
 
-% Custom ampersand
-\newcommand{\amper}{{\fontspec[Scale=.95]{$mainfont$}\selectfont\itshape\&}}
-
-$if(altfont)$
-  \setsansfont{$altfont$}
-$endif$
+% Left align
+\usepackage[document]{ragged2e}
 
 % Command required by how Pandoc handles the list conversion
 \providecommand{\tightlist}{%
@@ -87,6 +79,8 @@ $endif$
 % DOCUMENT
 %--------------------------------
 \begin{document}
+
+
 \small
 
 
@@ -103,7 +97,7 @@ $endif$
 
 \vspace{1em}
 
-\normalsize \sffamily
+\normalsize 
 $for(to)$
 $to$\\
 $endfor$
@@ -111,11 +105,10 @@ $endfor$
 \vspace{3em}
 
 $if(subject)$
-\textbf{$subject$}
+  \textbf{$subject$}
 $endif$
 
 \vspace{1em}
-
 $body$
 
 $if(signBelow)$
